@@ -22,7 +22,7 @@ public class LRUStrategyTest {
             cacheStrategy.put(i, i);
         }
     }
-
+    
     @Test
     void testPutSuccess() {
         Integer key = 1;
@@ -31,7 +31,7 @@ public class LRUStrategyTest {
         assertEquals(value, cacheStrategy.get(key));
         assertEquals(oldValue, Integer.valueOf(1));
     }
-
+    
     @Test
     void testGetSuccess() {
         Integer key = 1;
@@ -60,17 +60,17 @@ public class LRUStrategyTest {
     
     @Test
 	public void testInitCacheEmpty() {
-		assertEquals(cacheStrategy.get(1), null);
+		assertEquals(cacheStrategy.get(111), null);
 	}
-
-	@Test
+    
+    @Test
 	public void testSetBelowCapacity() {
 		cacheStrategy.put(1, 1);
-		assertEquals(cacheStrategy.get(1).intValue(), 1);
-		assertEquals(cacheStrategy.get(2), null);
+		assertEquals(cacheStrategy.get(1).longValue(), 1L);
+		assertEquals(cacheStrategy.get(222), null);
 		cacheStrategy.put(2, 4);
-		assertEquals(cacheStrategy.get(1).intValue(), 1);
-		assertEquals(cacheStrategy.get(2).intValue(), 4);
+		assertEquals(cacheStrategy.get(1).longValue(), 1L);
+		assertEquals(cacheStrategy.get(2).longValue(), 4L);
 	}
 
 	@Test
@@ -78,19 +78,20 @@ public class LRUStrategyTest {
 		cacheStrategy.put(1, 1);
 		cacheStrategy.put(2, 3);
 		cacheStrategy.put(3, 6);
-		assertEquals(cacheStrategy.get(1), null);
-		assertEquals(cacheStrategy.get(2).intValue(), 3);
-		assertEquals(cacheStrategy.get(3).intValue(), 6);
+		assertEquals(cacheStrategy.get(111), null);
+		assertEquals(cacheStrategy.get(2).longValue(), 3L);
+		assertEquals(cacheStrategy.get(3).longValue(), 6L);
 	}
 
 	@Test
 	public void testGetRenewsEntry() {
 		cacheStrategy.put(1, 1);
 		cacheStrategy.put(2, 4);
-		assertEquals(cacheStrategy.get(1).intValue(), 1);
+		assertEquals(cacheStrategy.get(1).longValue(), 1L);
 		cacheStrategy.put(3, 9);
-		assertEquals(cacheStrategy.get(1).intValue(), 1);
-		assertEquals(cacheStrategy.get(2).intValue(), null);
-		assertEquals(cacheStrategy.get(3).intValue(), 9);
+		assertEquals(cacheStrategy.get(1).longValue(), 1L);
+		assertEquals(cacheStrategy.get(2222), null);
+		assertEquals(cacheStrategy.get(3).longValue(), 9L);
 	}
+	
 }
