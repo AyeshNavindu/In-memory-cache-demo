@@ -24,7 +24,7 @@ public class LFUStrategyTest {
 	}
 
 	@Test
-	void put() {
+	void testput() {
 		Integer key = 1;
 		Integer value = 111;
 		Integer oldValue = cacheStrategy.put(key, value);
@@ -33,20 +33,20 @@ public class LFUStrategyTest {
 	}
 
 	@Test
-	void get() {
+	void testget() {
 		Integer key = 1;
 		assertEquals(Integer.valueOf(key), key);
 	}
 
 	@Test
-	void size() {
+	void testsize() {
 		assertEquals(maxSize, cacheStrategy.size());
 		cacheStrategy.put(maxSize + 1, maxSize + 1);
 		assertEquals(maxSize, cacheStrategy.size());
 	}
 
 	@Test
-	void lfu() {
+	void testLfuStrategy() {
 		Integer key = maxSize / 2;
 		for (int i = 0; i < maxSize; i++) {
 			if (i != key) {

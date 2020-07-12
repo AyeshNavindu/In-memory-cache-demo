@@ -5,6 +5,7 @@ import com.wiley.interview.phase.cache.strategies.CacheStrategy;
 import com.wiley.interview.phase.cache.strategies.LFUStrategy;
 import com.wiley.interview.phase.cache.strategies.LRUStrategy;
 
+
 public class Cache <K, V> {
     public static String MAX_SIZE_ERROR = "maxSize should be more than 0";
     public static String ALGORITHM_ERROR = "caching algorithm was not found";
@@ -23,7 +24,7 @@ public class Cache <K, V> {
             case LRU:
             	cacheStrategy = new LRUStrategy<>(maxSize);
                 break;
-            default: // It's impossible )
+            default: 
                 throw new ApplicationException(ALGORITHM_ERROR);
         }
     }

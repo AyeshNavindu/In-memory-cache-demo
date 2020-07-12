@@ -22,7 +22,7 @@ public class LRUStrategyTest {
             cacheStrategy.put(i, i);
         }
     }
-    
+   
     @Test
     void testPutSuccess() {
         Integer key = 1;
@@ -46,7 +46,7 @@ public class LRUStrategyTest {
     }
 
     @Test
-    void lru() {
+    void testLruStrategy() {
         Integer key = maxSize / 2;
         cacheStrategy.get(key);
         for (int i = 0; i < maxSize; i++) {
@@ -59,12 +59,12 @@ public class LRUStrategyTest {
     }
     
     @Test
-	public void testInitCacheEmpty() {
+	public void testEmptyCache() {
 		assertEquals(cacheStrategy.get(111), null);
 	}
     
     @Test
-	public void testSetBelowCapacity() {
+	public void testLowerCapacityFlow() {
 		cacheStrategy.put(1, 1);
 		assertEquals(cacheStrategy.get(1).longValue(), 1L);
 		assertEquals(cacheStrategy.get(222), null);
@@ -74,7 +74,7 @@ public class LRUStrategyTest {
 	}
 
 	@Test
-	public void testCapacityReachedOldestRemoved() {
+	public void testCapacityRemoveOldest() {
 		cacheStrategy.put(1, 1);
 		cacheStrategy.put(2, 3);
 		cacheStrategy.put(3, 6);

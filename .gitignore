@@ -32,3 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignore `bin` dir
+*/bin/*

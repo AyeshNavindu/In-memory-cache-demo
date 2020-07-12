@@ -7,8 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.stream.IntStream;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.wiley.interview.phase.cache.FileSystemCache;
@@ -19,12 +19,12 @@ public class FileSystemCacheTest {
 
 	private FileSystemCache<Integer, String> fileSystemCache;
 
-	@Before
+	@BeforeEach
 	public void init() {
 		fileSystemCache = new FileSystemCache<>();
 	}
 
-	@After
+	@AfterEach
 	public void clearCache() {
 		fileSystemCache.clearCache();
 	}
